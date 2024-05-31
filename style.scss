@@ -1,0 +1,161 @@
+$background-color: #101010;
+$text-color: #f2f2f2;
+$text-color-sec: #868686;
+$accent-color: #417b63;
+$paper-color: #1b1b1b;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Screen sizes */
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  padding: 1rem;
+  max-width: 1400px;
+  margin: auto;
+}
+
+h1 {
+  color: $text-color;
+  font-weight: 400;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+header {
+  color: #f2f2f2;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  cursor: default;
+  color: $text-color;
+}
+
+ul {
+  list-style: none;
+}
+
+.mh {
+  display: flex;
+  font-weight: normal;
+  font-size: 1.5rem;
+
+  &::before {
+    content: "";
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-right: 2px solid $accent-color;
+    margin-right: 5px;
+    height: 30px;
+    display: flex;
+    align-self: center;
+  }
+}
+
+.card-container {
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.media-info {
+  margin: 7px;
+  height: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+
+  .meta {
+    .media-tag {
+      font-size: 0.8rem;
+      .media-year {
+        color: $text-color-sec;
+      }
+
+      .media-cat {
+        color: rgb(189, 189, 189);
+      }
+    }
+  }
+  .media-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &:hover a {
+      color: $accent-color;
+      transition: color 200ms;
+    }
+  }
+
+  .watch {
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    border-radius: 7px;
+    width: 100%;
+    gap: 1em;
+    color: $text-color-sec; // Make sure the SCSS variable is defined or replace with a CSS color value
+    transition: all 200ms;
+
+    &:hover {
+      background-color: rgb(51, 51, 51);
+    }
+
+    .play {
+      // styles for .play, if any
+    }
+  }
+}
+
+.card {
+  background-color: $paper-color;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+section {
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+  @include mobile {
+    padding: unset;
+  }
+}
